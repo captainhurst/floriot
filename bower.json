@@ -1,0 +1,24 @@
+{
+  "name": "mean",
+  "version": "0.4.0",
+  "dependencies": {
+    "jquery": "2.x",
+    "bootstrap": "3.x",
+    "fontawesome": "latest",
+    "modernizr": "latest",
+    "respond": "latest",
+    "slick": "latest",
+    "uglify-js": "latest",
+    "colors": "latest",
+    "maginificantpopup": "latest",
+    "gmaps": "latest",
+    "snapjs": "latest",
+    "fittext.js": "latest",
+    "adaptive-backgrounds": "latest",
+    "html5shiv": "latest",
+    "bootstrap-wysiwyg": "latest",
+    "fuelux": "latest",
+    "odometer": "latest",
+    "alertify.js": "latest"
+  }
+}
