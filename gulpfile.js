@@ -25,30 +25,38 @@ try {
 }
 
 var globalJS = require('./develop/global-js.js'); 
-var globalCSS = require('./develop/global-js.js');
+var globalCSS = require('./develop/global-css.js');
 
 
-// gulp.task('global-js', function () {
-//     gulp.src(globalJS.main, {base: './bower_components/'}) // path to your files
-//     .pipe(concat('globals.min.js'))
-//     .pipe(uglify())
-//     .pipe(gulp.dest('./static/javascript/'));
-// });
+// JAVASCRIPT TASKS
 
 gulp.task('global-js', function() {
     return gulp.src(globalJS.main)
+        .pipe(debug({verbose: true}))
         .pipe(concat('globals.js'))
-        .pipe(gulp.dest('static'))
-        .pipe(rename('globals.min.js'))
+        .pipe(gulp.dest('static/javascript'))
         .pipe(uglify())
-        .pipe(gulp.dest('static'));
+        .pipe(gulp.dest('static/javascript'));
 });
 
-// var paths = {
-//   admin_less  : ['./develop/admin-static/sb-admin-2/**/*.less'],
-//   less        : ['./develop/css/**/*.less'],
-//   images      : ['./develop/img/**/*.jpg', './src/minsites/img/**/*.png'],
-//   admin_build : path.join('./static/admin-static/',assetSrcPath),  
-//   build       : path.join('./static/',assetSrcPath),
-//   assets      : path.join(rootAssetPath,assetSrcPath)
-// };
+gulp.task('global-ie-js', function() {
+    return gulp.src(globalJS.ie_fix)
+        .pipe(debug({verbose: true}))
+        .pipe(concat('globals-ie.js'))
+        .pipe(gulp.dest('static/javascript'))
+        .pipe(uglify())
+        .pipe(gulp.dest('static/javascript'));
+});
+
+// CSS TASKS
+
+gulp.task('global-css', function() {
+    return gulp.src(globalCSS.main)
+    .pipe(debug({verbose: true}))
+    .pipe(concat('globals.css'))    
+    .pipe(less({compatability: "*"}))
+    .pipe(gulp.dest('static/css'))
+    .pipe(cssmin())
+    .pipe(gulp.dest('static/css'));
+});
+
