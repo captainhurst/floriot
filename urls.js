@@ -8,8 +8,8 @@ module.exports = app.use("/admin", admin);
 
 
 // Include Applications Here
-var content = require('./applications/content/urls');
-var boilerplate = require('./applications/boilerplate/urls');
+var content = require('./features/content/urls');
+var boilerplate = require('./features/boilerplate/urls');
 
 // Add Applications To The App Path At Correct Url
 module.exports = app.use("/", content);

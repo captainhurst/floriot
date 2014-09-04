@@ -1,6 +1,6 @@
 // DEFINE PATH TO CSS COMPONENTS USED
 var paths = {
-	"main"   : 
+	"globals"   : 
 				[
 					'./bower_components/colors/less/colors.css',				
 					'./bower_components/bootstrap/less/alerts.less',
@@ -17,7 +17,7 @@ var paths = {
 					'./bower_components/magnificantpopup/dist/magnific-popup.css',	
 					'./bower_components/snapjs/snap.css'								
 				],
-	"ie_fix" : 
+	"ieFix" : 
 				[
 														
 				]

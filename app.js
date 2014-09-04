@@ -66,6 +66,6 @@ app.use(function(err, req, res, next) {
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
-  console.log('Djangnode started on: ' + server.address().port);
+  console.log('||**||**||**||**||** Floriot started on: ' + server.address().port + ' **||**||**||**||**||');
 });
 
