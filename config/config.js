@@ -1,8 +1,6 @@
 var uxjs = require('../develop/global-js.js');
 var uxcss = require('../develop/global-css.js');
 
-
-
 var config = {
 	"buildUx": {
 		"js" : {
@@ -16,6 +14,20 @@ var config = {
 		"mobile" : {
 
 		}
+	},
+	"templates" : {
+		"toWatch" : [
+			"./develop/templates/scaffold/**.html",
+			"./develop/templates/components/**.html",	
+			"./develop/templates/layout/**.html"			
+		],
+		"toCompile" : [
+			"./develop/templates/scaffold/**.html",
+			"./develop/templates/components/**.html",
+			"./develop/templates/layout/**.html",						
+			"!./develop/templates/components/**.html"
+
+		]
 	}
 };
 

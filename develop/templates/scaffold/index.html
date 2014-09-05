@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+
+
+    {% block meta_tags %}
+    {% endblock %}
+
+
+    {% block local_css %}
+    {% endblock %}
+
+    {% block body %}
+    @@include('../components/header.html')
+    <!-- End Header -->
+    {{bodyVar}}
+    <!-- End Main Content -->
+    @@include('../components/footer.html')
+    {% endblock %}
+
+    {% block js_as_html %}
+    {% endblock %}
+ 

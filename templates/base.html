@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    {% block page_title %}
+    <title>{{ meta_title }}</title>{% endblock %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile/iOS Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">{% block meta_tags %} {% endblock %}
+
+    <link href="css/globals.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="javascript/globals.js"></script>
+    <![endif]-->
+    {% block local_css %} {% endblock %} This is a simple test
+
+</head>
+
+<body>
+    <!-- Begin Main Content -->
+    {% block body %} {% endblock %}
+    <!-- End Main Content -->
+    <script src="javascript/globals.js"></script>
+    {% block js_as_html %} {% endblock %}
+</body>
+
+</html>

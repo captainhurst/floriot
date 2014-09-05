@@ -5,19 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
-
+var settings = require('./settings.js');
 var app = express();
 
 // view engine setup
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/templates');
+app.set('views', __dirname + '/views');
+console.log(__dirname + '/views');
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+console.log(__dirname);
 app.use(favicon(__dirname + '/static/favicon.ico'));
 app.use(require('less-middleware')(path.join(__dirname, 'static')));
 app.use(express.static(path.join(__dirname, 'static')));
@@ -66,6 +68,6 @@ app.use(function(err, req, res, next) {
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
-  console.log('||**||**||**||**||** Floriot started on: ' + server.address().port + ' **||**||**||**||**||');
+  console.log( settings.cli.serverMessage +server.address().port);
 });
 
