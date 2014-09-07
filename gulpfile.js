@@ -95,6 +95,7 @@ gulp.task('global-ie-css', function() {
 
 gulp.task('make-templates-min', function(){
   return gulp.src(settings.config.templates.toCompile)
+  .pipe(debug({verbose: true}))
   .pipe(include({
       prefix: '@@',
     }))
@@ -109,6 +110,7 @@ gulp.task('make-templates-min', function(){
 
 gulp.task('make-templates-dev', function(){
   return gulp.src(settings.config.templates.toCompile)
+  .pipe(debug({verbose: true}))
   .pipe(include({
       prefix: '@@',
     }))

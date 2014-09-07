@@ -3,6 +3,6 @@ var app = express();
 var router = express.Router();
 var views = require('./views');
 
-router.get('/user', views.adminSection);
+router.get('/models', views.modelList);
 
 module.exports = router;

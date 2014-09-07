@@ -12,14 +12,12 @@ var app = express();
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
-console.log(__dirname + '/views');
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-console.log(__dirname);
 app.use(favicon(__dirname + '/static/favicon.ico'));
 app.use(require('less-middleware')(path.join(__dirname, 'static')));
 app.use(express.static(path.join(__dirname, 'static')));
@@ -27,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 // Applications
 var urls = require('./urls.js');
+console.log(urls._router.stack);
 app.use('/', urls);
 
 // app.get('/', function(req,res){

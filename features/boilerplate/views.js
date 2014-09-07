@@ -1,5 +1,5 @@
 
 
 module.exports.helloWorld = function(req, res){
-	res.send("Hello World!");
+	res.send("Hello Boilerplate World!");
 }
