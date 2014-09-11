@@ -6,5 +6,5 @@ module.exports.modelList = function(req, res){
 		"bodyVar": "This is where the body lives"
 	}
 	// res.render('index', context);
-	res.send("gets here");
+	res.send("gets models here");
 }

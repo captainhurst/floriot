@@ -6,4 +6,6 @@ module.exports.adminSection = function(req, res){
 		"bodyVar": "This is where the body lives"
 	}
 	res.render('index', context);
+	// res.send("gets user here");
+
 }

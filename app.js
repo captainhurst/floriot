@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 // Applications
 var urls = require('./urls.js');
-console.log(urls._router.stack);
+// console.log(urls._router.stack);
 app.use('/', urls);
 
 // app.get('/', function(req,res){
