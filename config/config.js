@@ -28,6 +28,9 @@ var config = {
 			"!./develop/templates/components/**.html"
 
 		]
+	},
+	"database":{
+		"name": "floriot"
 	}
 };
 

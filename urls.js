@@ -3,17 +3,19 @@ var router = express.Router();
 var app = express();
 
 //Admin Users
-var models = require('./admin/models/urls');
-var user = require('./admin/user/urls');
-// console.log(admin.stack);
-// module.exports = app.use("/admin", admin);
-module.exports = app.use('/admin', models);
-module.exports = app.use('/admin', user);
+	var models = require('./admin/models/urls');
+	var user = require('./admin/user/urls');
 
 // Include Applications Here
-var content = require('./features/content/urls');
-var boilerplate = require('./features/boilerplate/urls');
+	var content = require('./features/content/urls');
+	var boilerplate = require('./features/boilerplate/urls');
 
-// Add Applications To The App Path At Correct Url
-module.exports = app.use("/", content);
-module.exports = app.use("/boilerplate", boilerplate);
+	//Admin Routes
+	router.use('/admin', models);
+	router.use('/admin', user);
+
+	// Add Applications To The App Path At Correct Url
+	router.use("/", content);
+	router.use("/boilerplate", boilerplate);
+
+module.exports = router;

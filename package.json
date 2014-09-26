@@ -32,11 +32,11 @@
     "forever": "0.11.x",
     "knex": "0.6.x",
     "less-middleware": "^1.0.4",
-    "mongoose": "3.8.x",
+    "mongoose": "^3.8.16",
     "morgan": "1.2.x",
     "mysql": "2.4.x",
     "notifier": "0.1.x",
-    "passport": "0.2.x",
+    "passport": "^0.2.1",
     "passport-facebook": "1.0.x",
     "passport-google-oauth": "0.1.x",
     "passport-instagram": "0.1.x",
@@ -51,6 +51,7 @@
     "view-helpers": "0.1.x"
   },
   "devDependencies": {
+    "express-debug": "^1.1.1",
     "gulp": "3.8.x",
     "gulp-changed": "1.0.x",
     "gulp-clean": "^0.3.1",

@@ -5,13 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
+var morgan = require('morgan');
 var settings = require('./settings.js');
+var mongoose = require('mongoose');
 var app = express();
+
+//Debugger
+
+// require('express-debug')(app, {/* settings */});
 
 // view engine setup
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
+app.set('view cache', false);
+swig.setDefaults({ cache: false });
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
   extended: true
@@ -20,17 +28,24 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(favicon(__dirname + '/static/favicon.ico'));
 app.use(require('less-middleware')(path.join(__dirname, 'static')));
-app.use(express.static(path.join(__dirname, 'static')));
+// app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(__dirname + '/static'));
+
+//Database
+
+mongoose.connect('mongodb://localhost/'+settings.config.database.name);
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  console.log("Connected to Database: " + settings.config.database.name);
+});
 
 
 // Applications
 var urls = require('./urls.js');
-// console.log(urls._router.stack);
 app.use('/', urls);
 
-// app.get('/', function(req,res){
-// 	res.send('hello world');
-// });
 
 //  catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,29 +54,30 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-//  error handlers
+
+
+// error handlers
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.send('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
+// if (app.get('env') === 'development') {
+//     app.use(function(err, req, res, next) {
+//         res.status(err.status || 500);
+//         res.send('error', {
+//             message: err.message,
+//             error: err
+//         });
+//     });
+// }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-
+// app.use(function(err, req, res, next) {
+//     res.status(err.status || 500);
+//     res.render('error', {
+//         message: err.message,
+//         error: {}
+//     });
+// });
 
 
 app.set('port', process.env.PORT || 3000);
