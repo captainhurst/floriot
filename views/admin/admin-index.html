@@ -1,0 +1,19 @@
+{% extends 'admin-base.html' %} {% block meta_tags %} {% endblock %} {% block local_css %} {% endblock %} {% block body %}
+<header>
+    {{headerVar}}
+</header>
+<!-- End Header -->
+<form action="/admin/user/test" method="POST">
+	<input type="text" name="first_name"/>
+	<input type="text" name="last_name"/>
+	<input type="text" name="email"/>
+	<button type="submit">Submit</button>
+</form>
+
+
+<!-- End Main Content -->
+<footer>
+    {{footerVar}}
+</footer>
+
+{% endblock %} {% block js_as_html %} {% endblock %}

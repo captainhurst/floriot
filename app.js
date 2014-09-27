@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -14,7 +14,11 @@ var app = express();
 
 // require('express-debug')(app, {/* settings */});
 
-// view engine setup
+
+// Static Files
+app.use(express.static(__dirname + '/static'));
+app.use('/static', express.static(__dirname + '/static'));
+// View engine setup
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
@@ -26,10 +30,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(favicon(__dirname + '/static/favicon.ico'));
+// app.use(favicon(__dirname + '/static/favicon.ico'));
 app.use(require('less-middleware')(path.join(__dirname, 'static')));
 // app.use(express.static(path.join(__dirname, 'static')));
-app.use(express.static(__dirname + '/static'));
 
 //Database
 
@@ -43,6 +46,7 @@ db.once('open', function callback () {
 
 
 // Applications
+
 var urls = require('./urls.js');
 app.use('/', urls);
 
