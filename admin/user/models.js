@@ -6,7 +6,10 @@ var models = {};
 models.User = mongoose.model('User', {
 	firstName: String,
 	lastName: String,
-	email: String
+	email: String,
+	isVerified: Boolean,
+	age: Number,
+	userType: String
 });
 
 

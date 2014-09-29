@@ -18,6 +18,7 @@ var app = express();
 // Static Files
 app.use(express.static(__dirname + '/static'));
 app.use('/static', express.static(__dirname + '/static'));
+
 // View engine setup
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');

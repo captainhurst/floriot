@@ -1,0 +1,45 @@
+{% extends 'admin-base.html' %} 
+
+{% block mainContent %} 
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{modelName}}</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<form method="POST" action="/admin/model/{{modelSlug}}/add">
+	{% for f in fieldList %}
+	<div class="row">
+		<div class="col-lg-12">
+			{% if f.fieldType == "text"%}
+				<div class="form-group">
+                    <label>{{f.inputLabel}}</label>
+                    <input class="{{f.inputClass}}" type="{{f.fieldType}}" name="{{f.fieldName}}" placeholder="{{f.placeholder}}">
+                    {% if f.helperText %}
+                    <p class="help-block">{{f.helperText}}</p>
+                    {% endif %}
+                </div>
+			{% elif f.fieldType == "dropdown" %}
+			<div class="form-group">
+              <label>{{f.inputLabel}}</label>
+              <select class="form-control" name="{{f.fieldName}}">
+				{% for o in f.options %}
+				<option value="{{o.value}}">{{o.name}}</option>
+				{% endfor %}
+              </select>
+              {% if f.helperText %}
+	            <p class="help-block">{{f.helperText}}</p>
+	          {% endif %}
+            </div>
+			{% endif %}
+
+		</div>
+	</div>
+	{% endfor %}
+	<div class="row">
+		<div class="col-lg-12">
+			<button class="btn btn-sm btn-success pull-right">Save</button> <button class="btn btn-sm btn-danger">Cancel</button>
+		</div>
+	</div>
+</form>
+{% endblock %} 

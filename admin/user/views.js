@@ -1,16 +1,13 @@
 var models = require('./models');
-
+var admin = require('./admin');
 
 module.exports = {
 
-	adminSection : function (req, res){
-			var context = {
-				"headerVar": "This is a user header",
-				"footerVar": "This is a footer!",
-				"bodyVar": "This is where the body lives"
-			}
-			res.render('index', context);
-			// res.send("gets user here");
+	adminModel : function (req, res){
+			var modelUrl = req.params.modelName;
+			console.log(admin[modelUrl].fieldList);
+			res.render('admin/admin-model', admin[modelUrl]);			
+			// res.send(admin[modelUrl]);
 		},
 
 	login: function (req, res){
