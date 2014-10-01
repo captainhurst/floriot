@@ -24,6 +24,15 @@ admin.user = {
 						maxLength: 50,
 					},
 					{
+						fieldName: "bio",
+						inputLabel: "User Bio",
+						placeholder: "Write a short bio...",
+						helperText: "Contact and Login Email Address",												
+						fieldType: "wysiwyg",
+						numRows: 15,						
+						inputClass: "form-control",
+					},
+					{
 						fieldName: "email",
 						inputLabel: "Email",
 						helperText: "Contact and Login Email Address",						
@@ -70,7 +79,7 @@ admin.user = {
 						maxLength: 3,
 					},
 					{
-						fieldName: "date",
+						fieldName: "registrationDate",
 						inputLabel: "Registration Date",
 						fieldType: "date",
 						inputClass: "form-control",

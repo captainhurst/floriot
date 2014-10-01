@@ -5,10 +5,34 @@ module.exports = {
 
 	adminModel : function (req, res){
 			var modelUrl = req.params.modelName;
-			console.log(admin[modelUrl].fieldList);
 			res.render('admin/admin-model', admin[modelUrl]);			
 			// res.send(admin[modelUrl]);
+
 		},
+
+	addModel : function (req, res){
+			// var modelUrl = req.params.modelName;
+			// res.render('admin/admin-model', admin[modelUrl]);			
+			// res.send(admin[modelUrl]);
+			console.log(req.body);
+			var user = new models.User(req.body);
+			user.save(function(err){
+				if(err){
+					res.send({success: false});
+				}else{
+					res.send(req.body);
+				}
+			})
+		},
+
+	modelItems : function (req, res){
+			// var modelUrl = req.params.modelName;
+			// res.render('admin/admin-model', admin[modelUrl]);			
+			// res.send(admin[modelUrl]);
+			var users = new models.User;
+			// var users = user.;
+			res.send(users);
+		},		
 
 	login: function (req, res){
 			res.send("login");

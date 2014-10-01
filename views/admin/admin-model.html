@@ -10,7 +10,7 @@
 <form method="POST" action="/admin/model/{{modelSlug}}/add">
 	{% for f in fieldList %}
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-6 col-md-8 col-sm-12">
 			{% if f.fieldType == "text"%}
 				<div class="form-group">
                     <label>{{f.inputLabel}}</label>
@@ -19,6 +19,29 @@
                     <p class="help-block">{{f.helperText}}</p>
                     {% endif %}
                 </div>
+			{% elif f.fieldType == "wysiwyg" %}
+			<div class="form-group">
+              <label>{{f.inputLabel}}</label>
+             {% if f.helperText %}
+	            <p class="help-block">{{f.helperText}}</p>
+	         {% endif %}
+	         <textarea class="form-control" id="{{f.fieldName}}{{loop.index}}" name="{{f.fieldName}}" rows="{{f.numRows}}" placeholder="{{f.placeholder}}"></textarea>
+	         <script type="text/javascript">
+	         $(document).ready(function(){
+			    $('#{{f.fieldName}}{{loop.index}}').wysihtml5({
+			    	stylesheets: false
+			    });
+			 });
+			</script>
+            </div>
+            {% elif f.fieldType == "textarea" %}
+			<div class="form-group">
+              <label>{{f.inputLabel}}</label>
+              {% if f.helperText %}
+	            <p class="help-block">{{f.helperText}}</p>
+	          {% endif %}
+              <textarea class="form-control" name="{{f.fieldName}}" rows="{{f.numRows}}" placeholder="{{f.placeholder}}"></textarea>
+            </div>
 			{% elif f.fieldType == "dropdown" %}
 			<div class="form-group">
               <label>{{f.inputLabel}}</label>
@@ -31,13 +54,43 @@
 	            <p class="help-block">{{f.helperText}}</p>
 	          {% endif %}
             </div>
+            {% elif f.fieldType == "checkbox" %}
+            <div class="form-group">
+            	<label></label>
+            	<label class="checkbox-inline">
+            		<input name="{{f.fieldName}}" type="checkbox"> {{f.inputLabel}}
+            	</label>
+            	{% if f.helperText %}
+            		<p class="help-block">{{f.helperText}}</p>
+            	{% endif %}
+            </div>
+            {% elif f.fieldType == "date" %}
+			<div class="form-group">
+              <label>{{f.inputLabel}}</label>
+		        <div class="form-group">
+		            <div class='input-group date' id='{{f.fieldName}}{{loop.index}}'>
+		                <input type='text' class="form-control" />
+		                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+		            </div>
+		        </div>
+		    </div>
+		    <script type="text/javascript">
+		        	$(document).ready(function(){
+			            $('#{{f.fieldName}}{{loop.index}}').datetimepicker();		        		
+		        	});
+		    </script>
+
+              {% if f.helperText %}
+	            <p class="help-block">{{f.helperText}}</p>
+	          {% endif %}
+            </div>
 			{% endif %}
 
 		</div>
 	</div>
 	{% endfor %}
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-6 col-md-8 col-sm-12">
 			<button class="btn btn-sm btn-success pull-right">Save</button> <button class="btn btn-sm btn-danger">Cancel</button>
 		</div>
 	</div>

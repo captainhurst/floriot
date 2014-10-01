@@ -9,7 +9,9 @@ models.User = mongoose.model('User', {
 	email: String,
 	isVerified: Boolean,
 	age: Number,
-	userType: String
+	userType: String,
+	bio: String,
+	registrationDate: Date
 });
 
 
