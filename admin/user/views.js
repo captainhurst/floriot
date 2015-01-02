@@ -11,12 +11,11 @@ module.exports = {
 		},
 
 	addModel : function (req, res){
-			// var modelUrl = req.params.modelName;
-			// res.render('admin/admin-model', admin[modelUrl]);			
-			// res.send(admin[modelUrl]);
-			console.log(req.body);
-			var user = new models.User(req.body);
-			user.save(function(err){
+			var modelUrl = req.params.modelName;
+			var adminModel = admin[modelUrl];
+			var mongooseName = adminModel.mongooseName;
+			var model = new models[mongooseName](req.body);
+			model.save(function(err){
 				if(err){
 					res.send({success: false});
 				}else{
@@ -29,9 +28,12 @@ module.exports = {
 			// var modelUrl = req.params.modelName;
 			// res.render('admin/admin-model', admin[modelUrl]);			
 			// res.send(admin[modelUrl]);
-			var users = new models.User;
+			var modelUrl = req.params.modelName;
+			var adminModel = admin[modelUrl];
+			var mongooseName = adminModel.mongooseName;
+			var model = new models[mongooseName].find({}).exec();
+			res.send(model);
 			// var users = user.;
-			res.send(users);
 		},		
 
 	login: function (req, res){

@@ -5,6 +5,8 @@ var admin = {};
 admin.user = {
 	modelSlug: "user",
 	modelName: "Admin Users",
+	mongooseName: "User",
+	collection: "users",
 	fieldList: [
 					{
 						fieldName: "firstName",
